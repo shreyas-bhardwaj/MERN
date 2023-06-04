@@ -1,0 +1,7 @@
+th{
+    background-color: rgba(0, 245, 131, 0.614);
+    color:white
+}
+tr:nth-child(even) {
+    background: rgb(191, 212, 210);
+  }

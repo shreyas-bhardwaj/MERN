@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse</title>
+    <script>
+        const rev = () => {
+          event.preventDefault();
+          let num = +document.getElementById("num").value;
+          if (num) {
+            let rev = 0;
+            while (num > 0) {
+              let digit = num % 10;
+              rev = rev * 10 + digit;
+              num = Math.floor(num / 10);
+            }
+            const p = document.getElementById("revNum")
+              ? document.getElementById("revNum")
+              : document.createElement("p");
+            p.id = "revNum";
+            p.innerText = rev;
+            document
+              .getElementsByTagName("p")[0]
+              .insertAdjacentElement("afterend", p);
+          } else {
+            console.log("Not a number");
+            return;
+          }
+        };
+      </script>
+    </head>
+    <body>
+      <form onSubmit="rev()">
+        <label for="num">Enter a number: </label>
+        <input type="number" id="num" /> <br />
+        <br />
+        <input type="submit" value="Submit" />
+      </form>
+      <p>Reverse of the number:</p>
+    </body>
+</html>

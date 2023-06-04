@@ -1,0 +1,23 @@
+li {
+    display: inline;
+    color:blue;
+    text-decoration: none;
+
+  }
+a{
+    width: 2.5%;
+}
+ul{
+    list-style-type: none;
+    width: 25%;
+
+}
+li.active {
+  color: white;
+  
+}
+
+li:hover:not(.active) {
+  background-color: #ffd900;
+  color: white;
+}

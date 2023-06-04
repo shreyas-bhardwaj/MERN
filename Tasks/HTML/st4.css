@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+  }
+  table,tr,td {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+  
+  tr:nth-child(11) {
+    font-weight: bold;
+    text-align: right;
+  }
+  
+  .fill {
+    width: 100%;
+  }
+  button{
+    margin-left: 45%;
+  }

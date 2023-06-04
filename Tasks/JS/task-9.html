@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>validate</title>
+    <script>
+        const validate = () => {
+            event.preventDefault();
+            const form = document.form;
+
+            const name = form.name;
+            const email = form.email;
+            const password = form.pwrd;
+            const phno = form.phno;
+            const gender = document.querySelector( 'input[name="gender"]:checked');   
+            const lang = form.getElementsByTagName('select')[0];
+            const zipcode = form.zipcode;
+            const about = form.about;
+
+        if (name.value === "") {
+          name.className = "incorrect";
+          const span = document.getElementById("incorrName")
+            ? document.getElementById("incorrName")
+            : document.createElement("span");
+          span.id = "incorrName";
+          span.innerText = "  This field is required";
+          span.className = "incorrect-txt";
+          name.insertAdjacentElement("afterend", span);
+        } else if (document.getElementById("incorrName")) {
+          document.getElementById("incorrName").remove();
+          name.className = "";
+        }
+
+        if (about.value === "") {
+          about.className = "incorrect";
+          const span = document.getElementById("incorrAbout")
+            ? document.getElementById("incorrAbout")
+            : document.createElement("span");
+          span.id = "incorrAbout";
+          span.innerText = "  This field is required";
+          span.className = "incorrect-txt";
+          about.insertAdjacentElement("afterend", span);
+        } else if (document.getElementById("incorrAbout")) {
+          document.getElementById("incorrAbout").remove();
+          about.className = "";
+        }
+
+        const emailTest = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if (!email.value.match(emailTest)) {
+          email.className = "incorrect";
+          const span = document.getElementById("incorrEmail")
+            ? document.getElementById("incorrEmail")
+            : document.createElement("span");
+          span.id = "incorrEmail";
+          span.innerText = "  Enter a valid email address";
+          span.className = "incorrect-txt";
+          email.insertAdjacentElement("afterend", span);
+        } else if (document.getElementById("incorrEmail")) {
+          document.getElementById("incorrEmail").remove();
+          email.className = "";
+        }
+
+        if(password.value.length < 8) {
+            password.className = "incorrect";
+          const span = document.getElementById("incorrPw")
+            ? document.getElementById("incorrPw")
+            : document.createElement("span");
+          span.id = "incorrPw";
+          span.innerText = "  Password length must be atleast 8 characters";
+          span.className = "incorrect-txt";
+          password.insertAdjacentElement("afterend", span);
+        } else if (document.getElementById("incorrPw")) {
+          document.getElementById("incorrPw").remove();
+          password.className = "";
+        }
+
+        if(phno.value.length != 10) {
+            phno.className = "incorrect";
+          const span = document.getElementById("incorrPhno")
+            ? document.getElementById("incorrPhno")
+            : document.createElement("span");
+          span.id = "incorrPhno";
+          span.innerText = "  Phone number length must be 10 characters";
+          span.className = "incorrect-txt";
+          phno.insertAdjacentElement("afterend", span);
+        } else if (document.getElementById("incorrPhno")) {
+          document.getElementById("incorrPhno").remove();
+          phno.className = "";
+        }        
+
+        if(gender === null) {
+
+            const span = document.getElementById("incorrGender")
+            ? document.getElementById("incorrGender")
+            : document.createElement("span");
+          span.id = "incorrGender";
+          span.innerText = "  Pick a gender";
+          span.className = "incorrect-txt";
+          const other = document.querySelector( 'label[for="other"]');   
+
+          other.insertAdjacentElement("afterend", span);
+        } else if (document.getElementById("incorrGender")) {
+          document.getElementById("incorrGender").remove();
+        }
+        console.log(gender, lang);
+
+        if(lang.selectedIndex < 1) {
+            const span = document.getElementById("incorrLang")
+            ? document.getElementById("incorrLang")
+            : document.createElement("span");
+          span.id = "incorrLang";
+          span.innerText = "  Pick a language";
+          span.className = "incorrect-txt";
+          lang.insertAdjacentElement("afterend", span);
+        } else if (document.getElementById("incorrLang")) {
+          document.getElementById("incorrLang").remove();
+        }
+
+        if(zipcode.value.length != 6) {
+            zipcode.className = "incorrect";
+          const span = document.getElementById("incorrZipcode")
+            ? document.getElementById("incorrZipcode")
+            : document.createElement("span");
+          span.id = "incorrZipcode";
+          span.innerText = "  Zipcode length must be 6 characters";
+          span.className = "incorrect-txt";
+          zipcode.insertAdjacentElement("afterend", span);
+        } else if (document.getElementById("incorrZipcode")) {
+          document.getElementById("incorrZipcode").remove();
+          zipcode.className = "";
+        }  
+
+        }
+    </script>
+    <style>
+      body {
+        text-align: center;
+      }
+      div {
+        margin: 20px;
+        width: 60%;
+        height: 90%;
+        display: inline-block;
+        justify-content: center;
+      }
+      table {
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: separate;
+        border-spacing: 10px 10px;
+      }
+      td {
+        width: 50%;
+      }
+      form {
+        padding: 20px;
+        color: white;
+      }
+      #submit {
+        width:100%;
+        height: 40px;
+        border-radius: 10px;
+        border: 0px solid white;
+        background-color: aliceblue;
+        font-weight: bold;
+        font-size: 24px;
+      }
+      .incorrect {
+        border-color: red;
+      }
+      .incorrect-txt {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="background-color:rgb(65, 227, 65);">
+      <form name = "form" onsubmit="validate()">
+        <table style="background-color: rgb(5, 113, 5); ">
+          <tr>
+            <td>
+              <label>Name</label>
+            </td>
+            <td><input type="text" name="name" placeholder="your name"/></td>
+          </tr>
+          <tr>
+            <td>
+              <label>Email</label>
+            </td>
+            <td><input type="email" name="email" placeholder="your email"/></td>
+          </tr>
+          <tr>
+            <td>
+              <label>Password</label>
+            </td>
+            <td><input type="password" name="pwrd" /></td>
+          </tr>
+          <tr>
+            <td>
+              <label> Phone Number </label>
+            </td>
+            <td>
+              <input type="number" name="phno" />
+            </td>
+          </tr>
+            <td>
+              <label>Gender</label>
+            </td>
+            <td>
+              <input type="radio" name="gender" id="male" />
+              <label for="male">Male</label>
+              <input type="radio" name="gender" id="female" />
+              <label for="female">Female</label>
+              <input type="radio" name="gender" id="other" />
+              <label for="other">Other</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Language</label>
+            </td>
+            <td>
+              <select>
+                <option value="country">Select Language</option>
+                <option value="English">English</option>
+                <option value="Tamil">French</option>
+                <option value="Hindi">Japanese</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label> Zipcode </label>
+            </td>
+            <td>
+              <input type="number" name="zipcode"/>
+            </td>
+          </tr>
+          
+          <tr>
+            <td>
+              <label> About </label>
+            </td>
+            <td>
+              <textarea
+                cols="40"
+                rows="3"
+                name = "about"
+                placeholder="Write about yourself..."
+              ></textarea>
+            </td>
+          </tr>
+            <td colspan="2" style="text-align: left">
+                <br>
+              <input type="submit" id="submit" value="Register" />
+            </td>
+          </tr>
+        </table>
+        <br />
+      </form>
+    </div>
+  </body>
+</html>

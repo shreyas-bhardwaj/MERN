@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate again</title>
+    <script>
+        const validate = () => {
+          event.preventDefault();
+          const form = document.form;
+  
+          const firstname = form.firstname;
+          const lastname = form.lastname;
+          const email = form.email;
+          const password = form.pwrd;
+          const rpassword = form.rpwrd;
+          const age = form.age;
+          const phno = form.phno;
+          const address = form.address;
+          const state = form.state;
+  
+          if (firstname.value === "") {
+            firstname.className = "incorrect";
+            const span = document.getElementById("incorrFname")
+              ? document.getElementById("incorrFname")
+              : document.createElement("span");
+            span.id = "incorrFname";
+            span.innerText = "  POOR";
+            span.className = "incorrect-txt";
+            firstname.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrFname")) {
+            document.getElementById("incorrFname").remove();
+            firstname.className = "";
+          }
+  
+          if (lastname.value === "") {
+            lastname.className = "incorrect";
+            const span = document.getElementById("incorrLname")
+              ? document.getElementById("incorrLname")
+              : document.createElement("span");
+            span.id = "incorrLname";
+            span.innerText = "  POOR";
+            span.className = "incorrect-txt";
+            lastname.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrLname")) {
+            document.getElementById("incorrLname").remove();
+            lastname.className = "";
+          }
+  
+          const emailTest = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          if (!email.value.match(emailTest)) {
+            email.className = "incorrect";
+            const span = document.getElementById("incorrEmail")
+              ? document.getElementById("incorrEmail")
+              : document.createElement("span");
+            span.id = "incorrEmail";
+            span.innerText = "  POOR";
+            span.className = "incorrect-txt";
+            email.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrEmail")) {
+            document.getElementById("incorrEmail").remove();
+            email.className = "";
+          }
+  
+          if (password.value.length < 8) {
+            password.className = "incorrect";
+            const span = document.getElementById("incorrPw")
+              ? document.getElementById("incorrPw")
+              : document.createElement("span");
+            span.id = "incorrPw";
+            span.innerText = "  POOR";
+            span.className = "incorrect-txt";
+            password.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrPw")) {
+            document.getElementById("incorrPw").remove();
+            password.className = "";
+          }
+  
+          if (rpassword.value.length < 8 || rpassword.value != password.value) {
+            rpassword.className = "incorrect";
+            const span = document.getElementById("incorrRpw")
+              ? document.getElementById("incorrRpw")
+              : document.createElement("span");
+            span.id = "incorrRpw";
+            span.innerText = "  POOR";
+            span.className = "incorrect-txt";
+            rpassword.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrRpw")) {
+            document.getElementById("incorrRpw").remove();
+            rpassword.className = "";
+          }
+  
+          if (age.value === "" || age.value < 18 || age.value > 99) {
+            age.className = "incorrect";
+            const span = document.getElementById("incorrAge")
+              ? document.getElementById("incorrAge")
+              : document.createElement("span");
+            span.id = "incorrAge";
+            span.innerText = "  POOR";
+            span.className = "incorrect-txt";
+            age.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrAge")) {
+            document.getElementById("incorrAge").remove();
+            age.className = "";
+          }
+  
+          if (phno.value.length != 10) {
+            phno.className = "incorrect";
+            const span = document.getElementById("incorrPhno")
+              ? document.getElementById("incorrPhno")
+              : document.createElement("span");
+            span.id = "incorrPhno";
+            span.innerText = "  POOR";
+            span.className = "incorrect-txt";
+            phno.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrPhno")) {
+            document.getElementById("incorrPhno").remove();
+            phno.className = "";
+          }
+  
+          if (address.value.trim() === "") {
+            address.className = "incorrect";
+            const span = document.getElementById("incorrAddress")
+              ? document.getElementById("incorrAddress")
+              : document.createElement("span");
+            span.id = "incorrAddress";
+            span.innerText = "  POOR";
+            span.className = "incorrect-txt";
+            address.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrAddress")) {
+            document.getElementById("incorrAddress").remove();
+            address.className = "";
+          }
+  
+          if (state.value === "") {
+            state.className = "incorrect";
+            const span = document.getElementById("incorrState")
+              ? document.getElementById("incorrState")
+              : document.createElement("span");
+            span.id = "incorrState";
+            span.innerText = "  POOR";
+            span.className = "incorrect-txt";
+            state.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrState")) {
+            document.getElementById("incorrState").remove();
+            state.className = "";
+          }
+        };
+      </script>
+      <style>
+        table {
+          width: 100%;
+        }
+        table,
+        tr,
+        td {
+          width: 70%;
+          margin-left: auto;
+          margin-right: auto;
+          border: 0px solid black;
+          border-collapse: separate;
+          padding-left: 25px;
+          border-spacing: 10px 10px;
+        }
+        tr {
+        }
+        td:nth-child(1) {
+          width: auto;
+          font-weight: bold;
+          text-align: right;
+        }
+        .fill {
+          width: 80%;
+        }
+        h1 {
+          text-align: center;
+          color: rgb(201, 244, 9);
+        }
+        body {
+          background-image: linear-gradient(rgb(142, 26, 225), rgb(244, 13, 156));
+        }
+        .incorrect {
+          border-color: red;
+        }
+        .incorrect-txt {
+          color: red;
+        }
+      </style>
+    </head>
+    <body>
+      <h1>Registration Form</h1>
+      <form name="form" onclick="validate()">
+        <table>
+          <tr>
+            <td>
+              <label>First Name</label>
+            </td>
+            <td><input type="text" name="firstname" class="fill" /></td>
+          </tr>
+          <tr>
+            <td>
+              <label>Last Name</label>
+            </td>
+            <td><input type="text" name="lastname" class="fill" /></td>
+          </tr>
+          <tr>
+            <td>
+              <label>Email</label>
+            </td>
+            <td><input type="email" name="email" class="fill" /></td>
+          </tr>
+          <tr>
+            <td>
+              <label>Password</label>
+            </td>
+            <td><input type="password" name="pwrd" class="fill" /></td>
+          </tr>
+          <tr>
+            <td>
+              <label>Re Password</label>
+            </td>
+            <td><input type="password" name="rpwrd" class="fill" /></td>
+          </tr>
+          <tr>
+            <td>
+              <label>Gender</label>
+            </td>
+            <td>
+              <input type="radio" name="gender" id="male" />
+              <label for="male">Male</label> <br />
+              <input type="radio" name="gender" id="female" />
+              <label for="female">Female</label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label> Age </label>
+            </td>
+            <td>
+              <input type="number" name="age" class="fill" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label> Phone Number </label>
+            </td>
+            <td>
+              <input type="number" name="phno" class="fill" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label> Address </label>
+            </td>
+            <td>
+              <textarea cols="80" rows="5" name="address" class="fill">
+              </textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label> State </label>
+            </td>
+            <td>
+              <input type="text" name="state" class="fill" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Country</label>
+            </td>
+            <td>
+              <select>
+                <option value="country">Choose your country</option>
+                <option value="india">India</option>
+                <option value="america">America</option>
+                <option value="england">England</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>Languages Known</label>
+            </td>
+            <td>
+              <input
+                type="checkbox"
+                id="english"
+                name="english"
+                value="english"
+              />
+              <label for="english"> English</label>
+              <input
+                type="checkbox"
+                id="kannada"
+                name="kannada"
+                value="kannada"
+              />
+              <label for="kannada"> Kannada</label>
+              <input type="checkbox" id="hindi" name="hindi" value="hindi" />
+              <label for="hindi"> Hindi</label>
+              <input type="checkbox" id="telugu" name="telugu" value="telugu" />
+              <label for="telugu"> Telugu</label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: left">
+              <input type="checkbox" />
+              <span style="font-weight: normal">
+                I hereby declare all the given information to be true
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2" style="text-align: right">
+              <span style="font-weight: normal">
+                Log in to <a href="#">Ethnus</a> website
+              </span>
+            </td>
+          </tr>
+        </table>
+        <br />
+        <div style="width: 100%; text-align: center">
+          <input type="submit" value="Register" style="border-radius:5px;"/>
+        </div>
+      </form>
+    </body>
+</html>

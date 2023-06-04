@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .incorrect {
+          border-color: red;
+        }
+        .incorrect-txt {
+          color: red;
+        }
+      </style>
+      <script>
+        const validate = () => {
+          event.preventDefault();
+          const name = document.form.name;
+          const email = document.form.email;
+          const website = document.form.website;
+          const msg = document.form.message;
+  
+          if (name.value === "") {
+            name.className = "incorrect";
+            const span = document.getElementById("incorrName")
+              ? document.getElementById("incorrName")
+              : document.createElement("span");
+            span.id = "incorrName";
+            span.innerText = "  This field is required";
+            span.className = "incorrect-txt";
+            name.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrName")) {
+            document.getElementById("incorrName").remove();
+            name.className = "";
+          }
+          if (msg.value === " ") {
+            msg.className = "incorrect";
+            const span = document.getElementById("incorrMsg")
+              ? document.getElementById("incorrMsg")
+              : document.createElement("span");
+            span.id = "incorrMsg";
+            span.innerText = "  This field is required";
+            span.className = "incorrect-txt";
+            msg.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrMsg")) {
+            document.getElementById("incorrMsg").remove();
+            msg.className = "";
+          }
+          const emailTest = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          if (!email.value.match(emailTest)) {
+            email.className = "incorrect";
+            const span = document.getElementById("incorrEmail")
+              ? document.getElementById("incorrEmail")
+              : document.createElement("span");
+            span.id = "incorrEmail";
+            span.innerText = "  Enter a valid email address";
+            span.className = "incorrect-txt";
+            email.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrEmail")) {
+            document.getElementById("incorrEmail").remove();
+            email.className = "";
+          }
+          let urlTest =
+            /[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi;
+          urlTest = new RegExp(urlTest);
+          if (!website.value.match(urlTest)) {
+            website.className = "incorrect";
+            const span = document.getElementById("incorrURL")
+              ? document.getElementById("incorrURL")
+              : document.createElement("span");
+            span.id = "incorrURL";
+            span.innerText = "  Enter a valid url";
+            span.className = "incorrect-txt";
+            website.insertAdjacentElement("afterend", span);
+          } else if (document.getElementById("incorrURL")) {
+            document.getElementById("incorrURL").remove();
+            website.className = "";
+          }
+        };
+      </script>
+    </head>
+    <body>
+      <form name="form" onsubmit="validate()">
+        <label> Name: </label>
+        <input type="text" name="name" id="name" /> <br />
+        <br />
+        <label> Email: </label>
+        <input type="text" name="email" id="email" /> <br /><br />
+        <label> Website: </label>
+        <input type="text" name="website" id="website" /> <br />
+        <br />
+        <label>Message: </label>
+        <textarea cols="60" rows="5" name="message"> </textarea><br /><br />
+        <input type="submit" value="Submit" />
+      </form>
+    </body>
+</html>

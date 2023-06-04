@@ -1,0 +1,33 @@
+#c1,#c2,#c3,#c4,#c5,#c6,#c7,#c8,#c9{
+    width:100px;
+    height: 70px;
+    border-style: solid;
+    border: 1px solid rgb(17, 229, 17);
+    margin: 4px;
+    border-width: 3px;
+}
+
+#c1{
+    border-radius: 10px;
+}
+#c4{
+    border-radius: 12px;
+}
+#c7{
+    border-radius: 20px;
+}
+#c2{
+    border-radius: 10px;
+}
+#c5{
+    border-radius: 2px;
+}
+#c8{
+    border-radius:15px;
+}
+#c3{
+    border-radius: 50%;
+}
+#c9{
+    border-radius: 0px 10px 0px 10px ;
+}

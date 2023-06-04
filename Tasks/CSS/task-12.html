@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>profile</title>
+		<style>
+			.center {
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				width: 50%;
+			}
+            input,label{
+                margin-top: 5px;
+                margin-bottom:5px;
+                font-weight: bold;
+            }
+		</style>
+	</head>
+	<body>
+		<div
+			style="
+				display: flex;
+				flex-direction: column;
+				width: 50%;
+				border: 1px solid black;
+			"
+		>
+			<div style="">
+				<img
+					src="img1.png"
+					alt=""
+					style="border-radius: 50%; width: 200px; height: 50%"
+					class="center"
+				/>
+			</div>
+			<div style="">
+				<form action="" class="center">
+					<label for="name">Username:</label><br />
+					<input type="text" name="uname" style="width:100%" placeholder="Enter username"/>
+                    <label for="name">Password:</label><br />
+					<input type="password" name="uname" style="width:100%" placeholder="Enter password"/>
+                    <button type="submit" style="width:102%;height:20px;background-color: rgb(2, 233, 2);border: none;">Submit</button>
+                    <input type="checkbox" id="rem" name="rem" >
+                    <label for="" style="font-size: small;">remember me</label>
+                    <div style="background-color: rgb(212, 211, 211);width: 102%;">
+                        <button style="background-color: red;border-radius:5px;">Cancel</button>
+                        <p style="text-align: right;">
+                            forgot <a href="#a">password</a>
+                            ?
+                        </p>
+                    </div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>
